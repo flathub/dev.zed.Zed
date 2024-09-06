@@ -3,7 +3,7 @@ app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-command: zed
+command: zed-wrapper
 separate-locales: false
 finish-args:
   - --device=dri
@@ -23,6 +23,9 @@ finish-args:
   - --socket=ssh-auth
   - --socket=gpg-agent
   - --talk-name=org.gnome.keyring.SystemPrompter
+
+  # Do not escape the flatpak container
+  - --env=ZED_FLATPAK_NO_ESCAPE=1
 
 modules:
   - shared-modules/libsecret/libsecret.json
@@ -51,6 +54,17 @@ modules:
       - type: archive
         sha256: 29df50974a90987af694c0fb8926a6b366e68cacd8abd813817cfe1eb5d54524
         url: https://download.gnome.org/sources/gcr/3.34/gcr-3.34.0.tar.xz
+
+  - name: flatpak-wrapper
+    buildsystem: meson
+    config-opts:
+      - -Deditor_binary=/app/bin/zed
+      - -Deditor_title=Zed
+      - -Dprogram_name=zed-wrapper
+    sources:
+      - type: git
+        commit: 3314b55ccd4ece8810715787e246f8407e20caab
+        url: https://github.com/flathub-infra/ide-flatpak-wrapper
 
   - name: zed
     buildsystem: simple
