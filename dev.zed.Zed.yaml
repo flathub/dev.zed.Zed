@@ -3,7 +3,7 @@ app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-command: zed
+command: zed-wrapper
 separate-locales: false
 finish-args:
   - --device=dri
@@ -111,12 +111,12 @@ modules:
       - type: file
         path: dev.zed.Zed.metainfo.xml
 
-  - name: wrapper
+  - name: zed-wrapper
     buildsystem: meson
     config-opts:
       - -Deditor_binary=/app/bin/zed
       - -Deditor_title=Zed
-      - -Dprogram_name=zed
+      - -Dprogram_name=zed-wrapper
       - -Dflagfile_prefix=flatpak-zed
     sources:
       - type: git
