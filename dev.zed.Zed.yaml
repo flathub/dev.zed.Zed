@@ -60,7 +60,8 @@ modules:
       - install -Dm 755 libexec/* --target-directory ${FLATPAK_DEST}/libexec
       - install -Dm 644 share/applications/* --target-directory ${FLATPAK_DEST}/share/applications
       - install -Dm 644 ${FLATPAK_ID}.metainfo.xml --target-directory ${FLATPAK_DEST}/share/metainfo
-      - install -Dm 644 share/icons/hicolor/512x512/apps/zed.png --target-directory ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
+      - install -Dm 644 share/icons/hicolor/512x512/apps/zed.png --target-directory
+        ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
 
       # Rename instances of `zed` to `${FLATPAK_ID}`
       - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/{applications/*,icons/hicolor/*/apps/*}
@@ -83,30 +84,25 @@ modules:
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.151.1/zed-linux-x86_64.tar.gz
-        sha256: 9cb751ff145ce3314ef818882678a397419b22060f174c2fe3ed7f2a975b551a
+        url: https://github.com/zed-industries/zed/releases/download/v0.152.3/zed-linux-x86_64.tar.gz
+        sha256: cc325604e10cedfaa3d3b6ee514543a2badbfd2df7017128376c65bd493e4545
         only-arches:
           - x86_64
         x-checker-data:
-          type: github
-          owner: zed-industries
-          repo: zed
-          tag-pattern: ^v(\d+\.\d+\.\d+)$
-          url-template: "https://github.com/zed-industries/zed/releases/download/v$version/zed-linux-x86_64.tar.gz"
-          hash-algo: sha256
-
+          type: json
+          url: https://api.github.com/repos/zed-industries/zed/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.151.1/zed-linux-aarch64.tar.gz
-        sha256: 16376cf937231b9d92469ab751c985f8d9599c8349be3025503ea64432f1689c
+        url: https://github.com/zed-industries/zed/releases/download/v0.152.3/zed-linux-aarch64.tar.gz
+        sha256: 551fc17465f0ff9f1fa6a8e3ca57a1655631d3f3000362dd75c24035ad31be70
         only-arches:
           - aarch64
         x-checker-data:
-          type: github
-          owner: zed-industries
-          repo: zed
-          tag-pattern: ^v(\d+\.\d+\.\d+)$
-          url-template: "https://github.com/zed-industries/zed/releases/download/v$version/zed-linux-aarch64.tar.gz"
-          hash-algo: sha256
+          type: json
+          url: https://api.github.com/repos/zed-industries/zed/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name=="zed-linux-aarch64.tar.gz") | .browser_download_url
 
       - type: file
         path: dev.zed.Zed.metainfo.xml
