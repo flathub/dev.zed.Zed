@@ -53,9 +53,11 @@ modules:
         url: https://download.gnome.org/sources/gcr/3.34/gcr-3.34.0.tar.xz
 
   - name: openssl
-    buildsystem: meson
-    config-opts:
-      - -Dshared=true
+    buildsystem: simple
+    build-commands:
+      - ./config --prefix=/app --openssldir=/app/ssl -Dshared=true
+      - make
+      - make install
     sources:
       - type: archive
         url: https://www.openssl.org/source/openssl-3.2.0.tar.gz
