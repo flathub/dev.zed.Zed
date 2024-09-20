@@ -52,6 +52,15 @@ modules:
         sha256: 29df50974a90987af694c0fb8926a6b366e68cacd8abd813817cfe1eb5d54524
         url: https://download.gnome.org/sources/gcr/3.34/gcr-3.34.0.tar.xz
 
+  - name: openssl
+    buildsystem: meson
+    config-opts:
+      - -Dshared=true
+    sources:
+      - type: archive
+        url: https://www.openssl.org/source/openssl-3.2.0.tar.gz
+        sha256: "14c826f07c7e433706fb5c69fa9e25dab95684844b4c962a2cf1bf183eb4690e"
+
   - name: zed
     buildsystem: simple
     build-commands:
