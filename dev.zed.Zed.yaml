@@ -66,7 +66,7 @@ modules:
       # Rename instances of `zed` to `${FLATPAK_ID}`
       - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/{applications/*,icons/hicolor/*/apps/*}
 
-        # Ensure `desktop-file-edit` validates; Enforce `[Desktop Action NewWorkspace]` has a matching action
+      # Ensure `desktop-file-edit` validates; Enforce `[Desktop Action NewWorkspace]` has a matching action
       - |
         if ! grep -q "^Actions=NewWorkspace" "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"; then
           # Find the line number where [Desktop Action NewWorkspace] is located
@@ -80,8 +80,11 @@ modules:
           fi
         fi
 
+      # Ensure zed-wrapper is used as the Exec command in the `.desktop` file
+      - desktop-file-edit --set-key="Exec" --set-value="zed-wrapper" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       # Modify original `.desktop` file to use the correct icon name
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+
     sources:
       - type: archive
         url: https://github.com/zed-industries/zed/releases/download/v0.153.6/zed-linux-x86_64.tar.gz
