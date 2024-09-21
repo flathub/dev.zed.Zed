@@ -60,8 +60,13 @@ modules:
       - make install
     sources:
       - type: archive
-        url: https://www.openssl.org/source/openssl-3.2.0.tar.gz
-        sha256: "14c826f07c7e433706fb5c69fa9e25dab95684844b4c962a2cf1bf183eb4690e"
+        url: https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz
+        sha256: 2e8a40b01979afe8be0bbfb3de5dc1c6709fedb46d6c89c10da114ab5fc3d281
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/openssl/openssl/releases/latest
+          version-query: .tag_name | sub("^openssl-"; "")
+          url-query: .assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url
 
   - name: zed
     buildsystem: simple
