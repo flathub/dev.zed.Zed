@@ -54,19 +54,12 @@ modules:
 
   - name: openssl
     buildsystem: simple
-    build-commands:
-      - ./config --prefix=/app --openssldir=/app --libdir=lib shared zlib no-tests
-      - make
-      - make install
+    config-opts:
+      - --prefix=/app
     sources:
       - type: archive
-        url: https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz
-        sha256: 2e8a40b01979afe8be0bbfb3de5dc1c6709fedb46d6c89c10da114ab5fc3d281
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/openssl/openssl/releases/latest
-          version-query: .tag_name | sub("^openssl-"; "")
-          url-query: .assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url
+        url: https://github.com/openssl/openssl/releases/download/openssl-3.2.3/openssl-3.2.3.tar.gz
+        sha256: 52b5f1c6b8022bc5868c308c54fb77705e702d6c6f4594f99a0df216acf46239
 
   - name: zed
     buildsystem: simple
