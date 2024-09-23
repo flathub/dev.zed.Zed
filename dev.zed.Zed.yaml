@@ -55,7 +55,7 @@ modules:
   - name: openssl
     buildsystem: simple
     build-commands:
-      - ./config --prefix=/app --openssldir=/app/etc/ssl -Dshared=true zlib no-tests
+      - ./config --prefix=/app --openssldir=/app --libdir=lib shared zlib no-tests
       - make
       - make install
     sources:
