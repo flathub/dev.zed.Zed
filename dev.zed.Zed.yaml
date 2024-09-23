@@ -54,8 +54,10 @@ modules:
 
   - name: openssl
     buildsystem: simple
-    config-opts:
-      - --prefix=/app
+    build-commands:
+      - ./config --prefix=/app --openssldir=/app --libdir=lib shared zlib no-tests
+      - make
+      - make install
     sources:
       - type: archive
         url: https://github.com/openssl/openssl/releases/download/openssl-3.2.3/openssl-3.2.3.tar.gz
