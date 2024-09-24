@@ -32,22 +32,13 @@ modules:
     cleanup:
       - /include
       - /lib/pkgconfig
-      - /man
-      - /share/aclocal
-      - /share/gtk-doc
-      - /share/info
-      - /share/man
-      - /share/pkgconfig
-      - '*.a'
-      - '*.la'
     config-opts:
       - -Dgtk_doc=false
       - -Dintrospection=false
-      - -Dvapi=false
     sources:
       - type: archive
-        sha256: c3ee8728e4364b0397f435fa20f92f901ab139d2b264f4e059d67b3c0f43cd36
-        url: https://download.gnome.org/sources/gcr/4.3/gcr-4.3.0.tar.xz
+        sha256: bb7128a3c2febbfee9c03b90d77d498d0ceb237b0789802d60185c71c4bea24f
+        url: https://download.gnome.org/sources/gcr/3.41/gcr-3.41.1.tar.xz
 
   - name: zed
     buildsystem: simple
