@@ -28,29 +28,26 @@ modules:
   - shared-modules/libsecret/libsecret.json
 
   - name: gcr
+    buildsystem: meson
     cleanup:
       - /include
-      - /lib/debug
-      - /lib/girepository-1.0
       - /lib/pkgconfig
       - /man
-      - /share/gir-1.0
+      - /share/aclocal
       - /share/gtk-doc
-      - /share/doc
+      - /share/info
       - /share/man
       - /share/pkgconfig
       - '*.a'
       - '*.la'
     config-opts:
-      - --disable-schemas-compile
-      - --disable-static
-      - --disable-update-mime
-      - --disable-vala
-      - --enable-valgrind=no
+      - -Dgtk_doc=false
+      - -Dintrospection=false
+      - -Dvapi=false
     sources:
       - type: archive
-        sha256: 29df50974a90987af694c0fb8926a6b366e68cacd8abd813817cfe1eb5d54524
-        url: https://download.gnome.org/sources/gcr/3.34/gcr-3.34.0.tar.xz
+        sha256: c3ee8728e4364b0397f435fa20f92f901ab139d2b264f4e059d67b3c0f43cd36
+        url: https://download.gnome.org/sources/gcr/4.3/gcr-4.3.0.tar.xz
 
   - name: zed
     buildsystem: simple
