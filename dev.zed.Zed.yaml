@@ -87,8 +87,8 @@ modules:
 
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.153.6/zed-linux-x86_64.tar.gz
-        sha256: 43f6d9f9eb7ced5d42056c37126afbf5c477020541e002f829d39bb70f424e43
+        url: https://github.com/zed-industries/zed/releases/download/v0.153.7/zed-linux-x86_64.tar.gz
+        sha256: 45a06d815b131d8d48ee5b11b00101e4d24b4c0e72722640058c22c9e0d538a8
         only-arches:
           - x86_64
         x-checker-data:
@@ -97,8 +97,8 @@ modules:
           version-query: .tag_name
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.153.6/zed-linux-aarch64.tar.gz
-        sha256: 91ef450f41cfc6a921c8783ca13ffde4fc05fe9db8d9857caa5304fc1b873e54
+        url: https://github.com/zed-industries/zed/releases/download/v0.153.7/zed-linux-aarch64.tar.gz
+        sha256: bb3f6e09e53d88c29a1dcc5ba49ace703a2a8a9f245e535bec23d2d45768fa7c
         only-arches:
           - aarch64
         x-checker-data:
