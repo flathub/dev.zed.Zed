@@ -27,6 +27,35 @@ finish-args:
 modules:
   - shared-modules/libsecret/libsecret.json
 
+   - name: openssl
+    buildsystem: simple
+     cleanup:
+      - '*.a'
+      - '*.la'
+    build-commands:
+      - ./Configure --prefix=${FLATPAK_DEST} shared enable-fips zlib no-tests
+      - make all
+    sources:
+      - type: archive
+        url: https://github.com/openssl/openssl/releases/download/openssl-3.2.3/openssl-3.2.3.tar.gz
+        sha256: 52b5f1c6b8022bc5868c308c54fb77705e702d6c6f4594f99a0df216acf46239
+
+  # - name: curl
+  #    cleanup:
+  #     - '*.la'
+  #   config-opts:
+  #     - --disable-manual 
+  #     - --disable-static
+  #     - --enable-hsts                       
+  #     - --enable-ipv6                       
+  #     - --enable-symbol-hiding              
+  #     - --enable-threaded-resolver
+  #     - --with-ssl
+  #   sources:
+  #     - type: archive
+  #       sha256: 73a4b0e99596a09fa5924a4fb7e4b995a85fda0d18a2c02ab9cf134bebce04ee
+  #       url: https://curl.se/download/curl-8.10.1.tar.xz         
+      
   - name: gcr
     buildsystem: meson
     cleanup:
@@ -64,7 +93,7 @@ modules:
       # Rename instances of `zed` to `${FLATPAK_ID}`
       - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/{applications/*,icons/hicolor/*/apps/*}
 
-        # Ensure `desktop-file-edit` validates; Enforce `[Desktop Action NewWorkspace]` has a matching action
+      # Ensure `desktop-file-edit` validates; Enforce `[Desktop Action NewWorkspace]` has a matching action
       - |
         if ! grep -q "^Actions=NewWorkspace" "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"; then
           # Find the line number where [Desktop Action NewWorkspace] is located
