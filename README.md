@@ -30,7 +30,7 @@ To get support for additional languages, you have to install SDK extensions, e.g
   $ flatpak install flathub org.freedesktop.Sdk.Extension.dotnet
   $ flatpak install flathub org.freedesktop.Sdk.Extension.golang
 ```
-To enable selected extensions, set FLATPAK_ENABLE_SDK_EXT environment variable
+To enable selected extensions, set `FLATPAK_ENABLE_SDK_EXT` environment variable
 to a comma-separated list of extension names (name is ID portion after the last dot):
 
 ```shell
