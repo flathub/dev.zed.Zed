@@ -23,27 +23,44 @@ finish-args:
   - --socket=ssh-auth
   - --socket=gpg-agent
   - --talk-name=org.gnome.keyring.SystemPrompter
+cleanup:
+  - /share/doc
+  - /share/gtk-doc
+  - /share/info
+  - /share/man
+  - '*.a'
+  - '*.la'
 
 modules:
   - shared-modules/libsecret/libsecret.json
 
   - name: openssl
     buildsystem: simple
-    cleanup:
-      - '*.a'
-      - '*.la'
     build-commands:
       - ./Configure --prefix=${FLATPAK_DEST} shared enable-fips zlib no-tests
       - make
-      - make install
+      - make install_sw
     sources:
       - type: archive
         url: https://github.com/openssl/openssl/releases/download/openssl-3.2.3/openssl-3.2.3.tar.gz
         sha256: 52b5f1c6b8022bc5868c308c54fb77705e702d6c6f4594f99a0df216acf46239
 
+  - name: libssh2
+    rm-configure: true
+    sources:
+      - type: archive
+        url: https://www.libssh2.org/download/libssh2-1.11.0.tar.gz
+        sha256: 3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461
+        x-checker-data:
+          type: anitya
+          project-id: 1730
+          url-template: https://www.libssh2.org/download/libssh2-$version.tar.gz
+      - type: script
+        commands:
+          - autoreconf -fiv
+        dest-filename: autogen.sh
+
   - name: curl
-    cleanup:
-      - '*.la'
     config-opts:
       - --disable-manual 
       - --disable-static
@@ -52,6 +69,7 @@ modules:
       - --enable-symbol-hiding              
       - --enable-threaded-resolver
       - --with-ssl
+      - --with-libssh2
     sources:
       - type: archive
         sha256: 73a4b0e99596a09fa5924a4fb7e4b995a85fda0d18a2c02ab9cf134bebce04ee
@@ -64,14 +82,8 @@ modules:
       - /lib/debug
       - /lib/girepository-1.0
       - /lib/pkgconfig
-      - /man
       - /share/gir-1.0
-      - /share/gtk-doc
-      - /share/doc
-      - /share/man
       - /share/pkgconfig
-      - '*.a'
-      - '*.la'
     config-opts:
       - -Dgtk_doc=false
       - -Dintrospection=false
