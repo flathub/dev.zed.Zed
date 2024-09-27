@@ -141,7 +141,7 @@ modules:
       - --enable-ipv6
       - --enable-symbol-hiding
       - --enable-threaded-resolver
-      - --with-ssl
+      - --with-openssl
       - --with-libssh2
     sources:
       - type: archive
