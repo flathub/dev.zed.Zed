@@ -37,7 +37,7 @@ modules:
       - /man
       - /share/gir-1.0
       - /share/doc
-      - /share/gtk-doc 
+      - /share/gtk-doc
       - /share/info
       - /share/man
       - /share/pkgconfig
@@ -83,7 +83,6 @@ modules:
       - desktop-file-edit --set-key="Exec" --set-value="zed-wrapper" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       # Modify original `.desktop` file to use the correct icon name
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
-
     sources:
       - type: archive
         url: https://github.com/zed-industries/zed/releases/download/v0.154.2/zed-linux-x86_64.tar.gz
