@@ -111,7 +111,7 @@ modules:
   - name: zed-wrapper
     buildsystem: meson
     config-opts:
-      - -Deditor_binary=${FLATPAK_DEST}/bin/zed
+      - -Deditor_binary=/app/bin/zed
       - -Deditor_title=Zed
       - -Dprogram_name=zed-wrapper
       - -Dfirst_run_template=README.md
