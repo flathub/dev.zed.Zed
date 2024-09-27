@@ -7,6 +7,13 @@ Please open issues under: https://github.com/flathub/dev.zed.Zed/issues
 
 Most functionality works out of the box, though please note that flatpak runs in an isolated environment and some work is necessary to enable those features.
 
+### Environment variables
+
+- `ZED_FLATPAK_NO_ESCAPE`: disable flatpak sandbox escape (default: not set)
+  ```shell
+    $ flatpak override --user dev.zed.Zed --env=ZED_FLATPAK_NO_ESCAPE=1
+  ```
+
 ### SDK extensions
 
 This flatpak provides a standard development environment (gcc, python, etc).
