@@ -27,9 +27,9 @@ finish-args:
 modules:
   - shared-modules/libsecret/libsecret.json
 
-   - name: openssl
+  - name: openssl
     buildsystem: simple
-     cleanup:
+    cleanup:
       - '*.a'
       - '*.la'
     build-commands:
@@ -41,7 +41,7 @@ modules:
         sha256: 52b5f1c6b8022bc5868c308c54fb77705e702d6c6f4594f99a0df216acf46239
 
   # - name: curl
-  #    cleanup:
+  #   cleanup:
   #     - '*.la'
   #   config-opts:
   #     - --disable-manual 
