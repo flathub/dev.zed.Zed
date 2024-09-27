@@ -36,8 +36,9 @@ modules:
       - /lib/pkgconfig
       - /man
       - /share/gir-1.0
-      - /share/gtk-doc
       - /share/doc
+      - /share/gtk-doc 
+      - /share/info
       - /share/man
       - /share/pkgconfig
       - '*.a'
@@ -111,7 +112,7 @@ modules:
   - name: zed-wrapper
     buildsystem: meson
     config-opts:
-      - -Deditor_binary=/app/bin/zed
+      - -Deditor_binary={FLATPAK_DEST}/bin/zed
       - -Deditor_title=Zed
       - -Dprogram_name=zed-wrapper
       - -Dflagfile_prefix=flatpak-zed
