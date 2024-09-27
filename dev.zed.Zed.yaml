@@ -104,7 +104,6 @@ modules:
           url: https://api.github.com/repos/zed-industries/zed/releases/latest
           version-query: .tag_name
           url-query: .assets[] | select(.name=="zed-linux-aarch64.tar.gz") | .browser_download_url
-
       - type: file
         path: dev.zed.Zed.metainfo.xml
 
