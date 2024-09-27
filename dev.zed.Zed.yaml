@@ -62,6 +62,7 @@ modules:
 
   - name: curl
     config-opts:
+      - --disable-docs
       - --disable-manual 
       - --disable-static
       - --enable-hsts                       
