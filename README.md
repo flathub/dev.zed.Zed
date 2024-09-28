@@ -5,7 +5,10 @@ Please open issues under: https://github.com/flathub/dev.zed.Zed/issues
 
 ## Usage
 
-Most functionality works out of the box, though please note that flatpak runs in an isolated environment and some work is necessary to enable those features.
+Zed's current Flatpak integration exits the sandbox on startup and most functionality works out of the box. Workflows that rely on Flatpak's sandboxing may not work as expected by default.
+
+Please note that Zed's flatpak still runs in an isolated environment and some language toolchains might misbehave when executed from the host OS into the sandbox.  
+The Zed's flatpak provides SDK extensions support that can be enabled to support problematic additional languages. As well as the ability to disable the sandbox escape at startup.
 
 ### Environment variables
 
@@ -13,6 +16,15 @@ Most functionality works out of the box, though please note that flatpak runs in
   ```shell
     $ flatpak override --user dev.zed.Zed --env=ZED_FLATPAK_NO_ESCAPE=1
   ```
+
+### Execute commands on the host system
+
+When Zed's flatpak is running in the sandbox with no escape, it is not possible to execute commands on the host system.
+
+To execute commands on the host system, run inside the sandbox:
+```shell
+  $ flatpak-spawn --host <COMMAND>
+```
 
 ### SDK extensions
 
@@ -42,8 +54,7 @@ To make this persistent, set the variable via flatpak override:
   $ flatpak override --user dev.zed.Zed --env=FLATPAK_ENABLE_SDK_EXT="dotnet,golang"
 ```
 
-You can use
-
+You can use:
 ```shell
   $ flatpak search <TEXT>
 ```
