@@ -8,7 +8,7 @@ Please open issues under: https://github.com/flathub/dev.zed.Zed/issues
 Zed's current Flatpak integration exits the sandbox on startup and most functionality works out of the box. Workflows that rely on Flatpak's sandboxing may not work as expected by default.
 
 Please note that Zed's flatpak still runs in an isolated environment and some language toolchains might misbehave when executed from the host OS into the sandbox.  
-The Zed's flatpak provides SDK extensions support that can be enabled to support problematic additional languages. As well as the ability to disable the sandbox escape at startup.
+The Zed's flatpak supports sandbox escape at startup disablement and SDK extensions that can be enabled to support problematic additional languages.
 
 ### Environment variables
 
