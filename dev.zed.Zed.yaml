@@ -116,6 +116,7 @@ modules:
       - -Dfirst_run_template=README.md
       - -Dsdk_update_template=sdk_update.md
       - -Dflagfile_prefix=flatpak-zed
+      - -Ddefault_loglevel=0
     sources:
       - type: git
         commit: 3314b55ccd4ece8810715787e246f8407e20caab
