@@ -59,8 +59,7 @@ modules:
       - install -Dm 755 libexec/* --target-directory ${FLATPAK_DEST}/libexec
       - install -Dm 644 share/applications/* --target-directory ${FLATPAK_DEST}/share/applications
       - install -Dm 644 ${FLATPAK_ID}.metainfo.xml --target-directory ${FLATPAK_DEST}/share/metainfo
-      - install -Dm 644 share/icons/hicolor/512x512/apps/zed.png --target-directory
-        ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
+      - install -Dm 644 share/icons/hicolor/512x512/apps/zed.png --target-directory ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
 
       # Rename instances of `zed` to `${FLATPAK_ID}`
       - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/{applications/*,icons/hicolor/*/apps/*}
@@ -85,8 +84,8 @@ modules:
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.155.2/zed-linux-x86_64.tar.gz
-        sha256: f926c3fa514f00030a54f9bbc2408b45a3ba2cb7c6e341182b21bbb7770690cd
+        url: https://github.com/zed-industries/zed/releases/download/v0.156.0/zed-linux-x86_64.tar.gz
+        sha256: 6146a3c4833650ad03e1c81ed41b0d151c9098c842e04273fd5f239ae47a3f62
         only-arches:
           - x86_64
         x-checker-data:
@@ -95,8 +94,8 @@ modules:
           version-query: .tag_name
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.155.2/zed-linux-aarch64.tar.gz
-        sha256: 64ebe2a1e3af33e9e4cc6e6b0946d2a20501925fa939217241a6cb5ae00f41a3
+        url: https://github.com/zed-industries/zed/releases/download/v0.156.0/zed-linux-aarch64.tar.gz
+        sha256: df286346f6b660569cc758672296dd1531d3407443c72f0f22e17e794dd54000
         only-arches:
           - aarch64
         x-checker-data:
