@@ -93,6 +93,7 @@ modules:
           url: https://api.github.com/repos/zed-industries/zed/releases/latest
           version-query: .tag_name
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
+          is-main-source: true
       - type: archive
         url: https://github.com/zed-industries/zed/releases/download/v0.157.5/zed-linux-aarch64.tar.gz
         sha256: 8ff0ebb0d095bc3d7615525d06d85084eeadc4ee35eab611b3d5155327d91257
@@ -103,6 +104,7 @@ modules:
           url: https://api.github.com/repos/zed-industries/zed/releases/latest
           version-query: .tag_name
           url-query: .assets[] | select(.name=="zed-linux-aarch64.tar.gz") | .browser_download_url
+          is-main-source: true
       - type: file
         path: dev.zed.Zed.metainfo.xml
 
