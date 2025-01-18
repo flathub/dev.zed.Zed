@@ -79,7 +79,7 @@ modules:
         fi
 
       # Ensure zed-wrapper is used as the Exec command in the `.desktop` file
-      - desktop-file-edit --set-key="Exec" --set-value="zed-wrapper" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key="Exec" --set-value="zed-wrapper %U" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       # Modify original `.desktop` file to use the correct icon name
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
