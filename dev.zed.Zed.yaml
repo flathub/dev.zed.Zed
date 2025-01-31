@@ -84,8 +84,8 @@ modules:
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.171.3/zed-linux-x86_64.tar.gz
-        sha256: 18a2f514a2588d2e461ab6f07246e682b29dfa8d08f9f25b0f42413d7854661a
+        url: https://github.com/zed-industries/zed/releases/download/v0.171.4/zed-linux-x86_64.tar.gz
+        sha256: 379257539e4626998782a914fd5a4c7e47dec91fb0a4e3cebc6b8ecf09be2bab
         only-arches:
           - x86_64
         x-checker-data:
@@ -95,8 +95,8 @@ modules:
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
           is-main-source: true
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.171.3/zed-linux-aarch64.tar.gz
-        sha256: 537214050f1f8d75cf64fd933f9a0daf12ff2fe3f17dee465fba6ab5be23eaf0
+        url: https://github.com/zed-industries/zed/releases/download/v0.171.4/zed-linux-aarch64.tar.gz
+        sha256: 87251184abbbdaf1f858fca7bfb519a9901d49d2194a6bbf0172904a3b664bb5
         only-arches:
           - aarch64
         x-checker-data:
