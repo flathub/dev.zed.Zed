@@ -1,7 +1,7 @@
 # dev.zed.Zed.yaml
 app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
-runtime-version: '24.08'
+runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
 command: zed-wrapper
 separate-locales: false
@@ -41,8 +41,8 @@ modules:
       - /share/info
       - /share/man
       - /share/pkgconfig
-      - '*.a'
-      - '*.la'
+      - "*.a"
+      - "*.la"
     config-opts:
       - -Dgtk_doc=false
       - -Dintrospection=false
@@ -50,6 +50,56 @@ modules:
       - type: archive
         sha256: bad10f3c553a0e1854649ab59c5b2434da22ca1a54ae6138f1f53961567e1ab7
         url: https://download.gnome.org/sources/gcr/3.41/gcr-3.41.2.tar.xz
+
+  - name: libmd
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://libbsd.freedesktop.org/releases/libmd-1.1.0.tar.xz
+        sha256: 1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332
+        x-checker-data:
+          type: anitya
+          project-id: 15525
+          stable-only: true
+          url-template: https://libbsd.freedesktop.org/releases/libmd-$version.tar.xz
+    cleanup:
+      - /lib/pkgconfig
+      - /share/man
+
+  - name: libbsd
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://libbsd.freedesktop.org/releases/libbsd-0.12.2.tar.xz
+        sha256: b88cc9163d0c652aaf39a99991d974ddba1c3a9711db8f1b5838af2a14731014
+        x-checker-data:
+          type: anitya
+          project-id: 1567
+          stable-only: true
+          url-template: https://libbsd.freedesktop.org/releases/libbsd-$version.tar.xz
+    cleanup:
+      - /lib/pkgconfig
+      - /share/man
+
+  - name: netcat
+    buildsystem: simple
+    build-commands:
+      - |
+        while read patch; do
+          echo "Applying $patch..."
+          patch -Np1 -i "debian/patches/$patch"
+        done < debian/patches/series
+      - make CFLAGS="$CFLAGS -I/usr/include/libbsd" LDFLAGS="$LDFLAGS -lbsd"
+      - install -Dm0755 nc /app/bin/nc
+    sources:
+      - type: archive
+        url: https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/1.228-1/netcat-openbsd-debian-1.228-1.tar.gz
+        sha256: a1eb2593335123efc6e9c12a7e73c72cbf0b665739130fc383322f36757f37cc
+        x-checker-data:
+          type: anitya
+          project-id: 21535
+          stable-only: true
+          url-template: https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/$version-1/netcat-openbsd-debian-$version-1.tar.gz
 
   - name: zed
     buildsystem: simple
