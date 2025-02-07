@@ -63,8 +63,14 @@
   <url type="contribute">https://github.com/zed-industries/zed/blob/main/CONTRIBUTING.md</url>
   <project_group>Zed</project_group>
   <releases>
-    <release version="v0.172.8" date="2025-02-05">
+    <release version="v0.172.10" date="2025-02-07">
       <description></description>
+    </release>
+    <release version="v0.172.9" date="2025-02-06">
+      <description/>
+    </release>
+    <release version="v0.172.8" date="2025-02-05">
+      <description/>
     </release>
     <release version="v0.171.6" date="2025-02-01">
       <description/>
