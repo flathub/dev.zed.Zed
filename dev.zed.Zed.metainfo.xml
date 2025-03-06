@@ -58,158 +58,60 @@
   <url type="bugtracker">https://github.com/zed-industries/zed/issues</url>
   <url type="faq">https://zed.dev/faq</url>
   <url type="help">https://zed.dev/docs/getting-started</url>
-  <url type="contact">https://zed.dev/docs/feedback-and-support</url>
+  <url type="contact">https://zed.dev/community-links#support-and-feedback</url>
   <url type="vcs-browser">https://github.com/zed-industries/zed</url>
   <url type="contribute">https://github.com/zed-industries/zed/blob/main/CONTRIBUTING.md</url>
   <project_group>Zed</project_group>
   <releases>
-    <release version="v0.176.2" date="2025-03-04">
-      <description></description>
-    </release>
-    <release version="v0.176.1" date="2025-03-03">
-      <description/>
-    </release>
-    <release version="v0.175.6" date="2025-02-27">
-      <description/>
-    </release>
-    <release version="v0.175.5" date="2025-02-26">
-      <description/>
-    </release>
-    <release version="v0.174.8" date="2025-02-25">
-      <description/>
-    </release>
-    <release version="v0.174.7" date="2025-02-25">
-      <description/>
-    </release>
-    <release version="v0.174.6" date="2025-02-20">
-      <description/>
-    </release>
-    <release version="v0.174.5" date="2025-02-19">
-      <description/>
-    </release>
-    <release version="v0.174.4" date="2025-02-19">
-      <description/>
-    </release>
-    <release version="v0.173.11" date="2025-02-18">
-      <description/>
-    </release>
-    <release version="v0.173.10" date="2025-02-14">
-      <description/>
-    </release>
-    <release version="v0.173.9" date="2025-02-14">
-      <description/>
-    </release>
-    <release version="v0.173.8" date="2025-02-13">
-      <description/>
-    </release>
-    <release version="v0.172.11" date="2025-02-10">
-      <description/>
-    </release>
-    <release version="v0.172.10" date="2025-02-07">
-      <description/>
-    </release>
-    <release version="v0.172.9" date="2025-02-06">
-      <description/>
-    </release>
-    <release version="v0.172.8" date="2025-02-05">
-      <description/>
-    </release>
-    <release version="v0.171.6" date="2025-02-01">
-      <description/>
-    </release>
-    <release version="v0.171.5" date="2025-01-31">
-      <description/>
-    </release>
-    <release version="v0.171.4" date="2025-01-31">
-      <description/>
-    </release>
-    <release version="v0.171.3" date="2025-01-29">
-      <description/>
-    </release>
-    <release version="v0.170.4" date="2025-01-27">
-      <description/>
-    </release>
-    <release version="v0.170.3" date="2025-01-27">
-      <description/>
-    </release>
-    <release version="v0.170.2" date="2025-01-23">
-      <description/>
-    </release>
-    <release version="v0.170.1" date="2025-01-22">
-      <description/>
-    </release>
-    <release version="v0.169.3" date="2025-01-21">
-      <description/>
-    </release>
-    <release version="v0.169.2" date="2025-01-15">
-      <description/>
-    </release>
-    <release version="v0.168.3" date="2025-01-13">
-      <description/>
-    </release>
-    <release version="v0.168.2" date="2025-01-08">
-      <description/>
-    </release>
-    <release version="v0.167.2" date="2025-01-06">
-      <description/>
-    </release>
-    <release version="v0.167.1" date="2025-01-01">
-      <description/>
-    </release>
-    <release version="v0.166.2" date="2024-12-19">
-      <description/>
-    </release>
-    <release version="v0.166.1" date="2024-12-18">
-      <description/>
-    </release>
-    <release version="v0.165.4" date="2024-12-11">
-      <description/>
-    </release>
-    <release version="v0.164.2" date="2024-12-04">
-      <description/>
-    </release>
-    <release version="v0.163.3" date="2024-12-02">
-      <description/>
-    </release>
-    <release version="v0.163.2" date="2024-11-27">
-      <description/>
-    </release>
-    <release version="v0.162.5" date="2024-11-22">
-      <description/>
-    </release>
-    <release version="v0.162.4" date="2024-11-21">
-      <description/>
-    </release>
-    <release version="v0.162.3" date="2024-11-20">
-      <description/>
-    </release>
-    <release version="v0.161.2" date="2024-11-14">
-      <description/>
-    </release>
-    <release version="v0.161.1" date="2024-11-13">
-      <description/>
-    </release>
-    <release version="v0.160.7" date="2024-11-06">
-      <description/>
-    </release>
-    <release version="v0.159.10" date="2024-11-04">
-      <description/>
-    </release>
-    <release version="v0.159.7" date="2024-11-01">
-      <description/>
-    </release>
-    <release version="v0.159.6" date="2024-10-31">
-      <description/>
-    </release>
-    <release version="v0.159.5" date="2024-10-30">
-      <description/>
-    </release>
-    <release version="v0.158.2" date="2024-10-24">
-      <description/>
-    </release>
-    <release version="v0.158.1" date="2024-10-23">
-      <description/>
-    </release>
+    <release version="v0.176.2" date="2025-03-04"/>
+    <release version="v0.176.1" date="2025-03-03"/>
+    <release version="v0.175.6" date="2025-02-27"/>
+    <release version="v0.175.5" date="2025-02-26"/>
+    <release version="v0.174.8" date="2025-02-25"/>
+    <release version="v0.174.7" date="2025-02-25"/>
+    <release version="v0.174.6" date="2025-02-20"/>
+    <release version="v0.174.5" date="2025-02-19"/>
+    <release version="v0.174.4" date="2025-02-19"/>
+    <release version="v0.173.11" date="2025-02-18"/>
+    <release version="v0.173.10" date="2025-02-14"/>
+    <release version="v0.173.9" date="2025-02-14"/>
+    <release version="v0.173.8" date="2025-02-13"/>
+    <release version="v0.172.11" date="2025-02-10"/>
+    <release version="v0.172.10" date="2025-02-07"/>
+    <release version="v0.172.9" date="2025-02-06"/>
+    <release version="v0.172.8" date="2025-02-05"/>
+    <release version="v0.171.6" date="2025-02-01"/>
+    <release version="v0.171.5" date="2025-01-31"/>
+    <release version="v0.171.4" date="2025-01-31"/>
+    <release version="v0.171.3" date="2025-01-29"/>
+    <release version="v0.170.4" date="2025-01-27"/>
+    <release version="v0.170.3" date="2025-01-27"/>
+    <release version="v0.170.2" date="2025-01-23"/>
+    <release version="v0.170.1" date="2025-01-22"/>
+    <release version="v0.169.3" date="2025-01-21"/>
+    <release version="v0.169.2" date="2025-01-15"/>
+    <release version="v0.168.3" date="2025-01-13"/>
+    <release version="v0.168.2" date="2025-01-08"/>
+    <release version="v0.167.2" date="2025-01-06"/>
+    <release version="v0.167.1" date="2025-01-01"/>
+    <release version="v0.166.2" date="2024-12-19"/>
+    <release version="v0.166.1" date="2024-12-18"/>
+    <release version="v0.165.4" date="2024-12-11"/>
+    <release version="v0.164.2" date="2024-12-04"/>
+    <release version="v0.163.3" date="2024-12-02"/>
+    <release version="v0.163.2" date="2024-11-27"/>
+    <release version="v0.162.5" date="2024-11-22"/>
+    <release version="v0.162.4" date="2024-11-21"/>
+    <release version="v0.162.3" date="2024-11-20"/>
+    <release version="v0.161.2" date="2024-11-14"/>
+    <release version="v0.161.1" date="2024-11-13"/>
+    <release version="v0.160.7" date="2024-11-06"/>
+    <release version="v0.159.10" date="2024-11-04"/>
+    <release version="v0.159.7" date="2024-11-01"/>
+    <release version="v0.159.6" date="2024-10-31"/>
+    <release version="v0.159.5" date="2024-10-30"/>
+    <release version="v0.158.2" date="2024-10-24"/>
+    <release version="v0.158.1" date="2024-10-23"/>
     <release version="v0.157.5" date="2024-10-16"/>
     <release version="v0.157.4" date="2024-10-16"/>
     <release version="v0.156.2" date="2024-10-14"/>
