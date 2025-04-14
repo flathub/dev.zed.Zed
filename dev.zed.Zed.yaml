@@ -19,10 +19,12 @@ finish-args:
 
   # Enable access to Freedesktop Secret Service & related auth services since Zed uses Git heavily
   - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.gnome.keyring
+  - --talk-name=org.gnome.keyring.SystemPrompter
   - --talk-name=org.kde.kwalletd6
   - --socket=ssh-auth
   - --socket=gpg-agent
-  - --talk-name=org.gnome.keyring.SystemPrompter
+  - --filesystem=xdg-run/keyring
 
 modules:
   - shared-modules/libsecret/libsecret.json
