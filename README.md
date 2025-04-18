@@ -24,8 +24,65 @@ To cope with it, Zed's flatpak defaults can be changed to:
 When Zed's flatpak is running in the sandbox with no escape, it is not possible to execute commands on the host system.
 
 To execute commands on the host system, run inside the sandbox:
+
 ```shell
-  $ flatpak-spawn --host <COMMAND>
+$ flatpak-spawn --host <COMMAND>
+```
+
+or
+
+```shell
+$ host-spawn <COMMAND>
+```
+
+- Most users seem to report a better experience with `host-spawn`
+
+### Use host shell in the integrated terminal.
+
+Another option to execute commands is to use your host shell in the integrated terminal instead of the sandbox one.
+
+For that, open Zed's settings via <kbd>Ctrl</kbd> + <kbd>,</kbd>
+
+The following examples will figure out and launch the current user's preferred terminal. More configuration settings for spawning commands can be found in [Zed's documentation](https://zed.dev/docs/configuring-zed#terminal-shell).
+
+`flatpak-spawn --host`
+
+```json
+{
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "/usr/bin/flatpak-spawn",
+        "args": [
+          "--host",
+          "--env=TERM=xterm-256color",
+          "sh",
+          "-c",
+          "exec $(getent passwd $USER | cut -d: -f7)"
+        ]
+      }
+    }
+  },
+}
+```
+
+`host-spawn`
+
+```json
+{
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "/app/bin/host-spawn",
+        "args": [
+          "sh",
+          "-c",
+          "exec $(getent passwd $USER | cut -d: -f7)"
+        ]
+      }
+    }
+  },
+}
 ```
 
 ### SDK extensions
