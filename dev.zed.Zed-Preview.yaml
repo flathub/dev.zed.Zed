@@ -1,5 +1,5 @@
-# dev.zed.Zed.yaml
-app-id: dev.zed.Zed
+# dev.zed.Zed-Preview.yaml
+app-id: dev.zed.Zed-Preview
 runtime: org.freedesktop.Sdk
 runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
@@ -160,7 +160,7 @@ modules:
             | .browser_download_url'
           is-main-source: true
       - type: file
-        path: dev.zed.Zed.metainfo.xml
+        path: dev.zed.Zed-Preview.metainfo.xml
 
   - name: host-spawn
     buildsystem: simple
@@ -196,7 +196,7 @@ modules:
     buildsystem: meson
     config-opts:
       - -Deditor_binary=/app/bin/zed
-      - -Deditor_title=Zed
+      - -Deditor_title=Zed Preview
       - -Dprogram_name=zed-wrapper
       - -Dfirst_run_template=README.md
       - -Dsdk_update_template=sdk_update.md
