@@ -108,12 +108,7 @@ modules:
       - install -Dm 644 ${FLATPAK_ID}.metainfo.xml --target-directory ${FLATPAK_DEST}/share/metainfo
       - install -Dm 644 share/icons/hicolor/512x512/apps/zed.png --target-directory ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
       # Only install zed prebuilt libraries that do not already exist in destination
-      - |
-        for lib in lib/*; do
-          if [ ! -f ${FLATPAK_DEST}/$lib ]; then
-            install -Dm 755 $lib --target-directory ${FLATPAK_DEST}/$lib
-          fi
-        done
+      - for lib in lib/*; do [ -f "${FLATPAK_DEST}/$lib" ] || install -Dm755 "$lib" "${FLATPAK_DEST}/$lib"; done
 
       # Rename instances of `zed` to `${FLATPAK_ID}`
       - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/{applications/*,icons/hicolor/*/apps/*}
