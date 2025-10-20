@@ -1,7 +1,7 @@
 # dev.zed.Zed.yaml
 app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
-runtime-version: "24.08"
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: zed-wrapper
 separate-locales: false
@@ -39,8 +39,8 @@ modules:
       - /share/info
       - /share/man
       - /share/pkgconfig
-      - "*.a"
-      - "*.la"
+      - '*.a'
+      - '*.la'
     config-opts:
       - -Dgtk_doc=false
       - -Dintrospection=false
@@ -108,7 +108,8 @@ modules:
       - install -Dm 644 ${FLATPAK_ID}.metainfo.xml --target-directory ${FLATPAK_DEST}/share/metainfo
       - install -Dm 644 share/icons/hicolor/512x512/apps/zed.png --target-directory ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
       # Only install zed prebuilt libraries that do not already exist in destination
-      - for lib in lib/*; do [ -f "${FLATPAK_DEST}/$lib" ] || install -Dm 755 $lib --target-directory ${FLATPAK_DEST}/lib; done
+      - for lib in lib/*; do [ -f "${FLATPAK_DEST}/$lib" ] || install -Dm 755 $lib --target-directory
+        ${FLATPAK_DEST}/lib; done
 
       # Rename instances of `zed` to `${FLATPAK_ID}`
       - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/{applications/*,icons/hicolor/*/apps/*}
@@ -133,8 +134,8 @@ modules:
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.208.5/zed-linux-x86_64.tar.gz
-        sha256: 8f1df9a90e162bdb2093311c1b0f66a8092d5b3e6d67847999f898408bdde459
+        url: https://github.com/zed-industries/zed/releases/download/v0.208.6/zed-linux-x86_64.tar.gz
+        sha256: 897b51e6a347615e83bf41ba429354d6d9b48c3b860155a8bc201c59ffb18e5e
         only-arches:
           - x86_64
         x-checker-data:
@@ -144,8 +145,8 @@ modules:
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
           is-main-source: true
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.208.5/zed-linux-aarch64.tar.gz
-        sha256: 37dabf3fec73fb301dc0e4d0d61c7a020951a0358a115ed411541f34584a6ef4
+        url: https://github.com/zed-industries/zed/releases/download/v0.208.6/zed-linux-aarch64.tar.gz
+        sha256: db4f06c85d750d72925eb6c63a210f53da05f516720d6da528826ebbbc75398f
         only-arches:
           - aarch64
         x-checker-data:
