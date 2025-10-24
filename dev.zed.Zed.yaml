@@ -1,7 +1,7 @@
 # dev.zed.Zed.yaml
 app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
-runtime-version: '24.08'
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 command: zed-wrapper
 separate-locales: false
@@ -91,8 +91,8 @@ modules:
       - install -Dm0755 nc /app/bin/nc
     sources:
       - type: archive
-        url: https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/1.228-1/netcat-openbsd-debian-1.228-1.tar.gz
-        sha256: a1eb2593335123efc6e9c12a7e73c72cbf0b665739130fc383322f36757f37cc
+        url: https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/1.229-1/netcat-openbsd-debian-1.229-1.tar.gz
+        sha256: 4984c52882affcc638678a887964f7ab1d21901a2c5c37a38363138370d4dbda
         x-checker-data:
           type: anitya
           project-id: 21535
@@ -198,7 +198,7 @@ modules:
       - -Ddefault_loglevel=0
     sources:
       - type: git
-        commit: 3314b55ccd4ece8810715787e246f8407e20caab
+        commit: d581fd9b873acbf6fb22899aa388435f6c00f61a
         url: https://github.com/flathub-infra/ide-flatpak-wrapper
       - type: file
         path: README.md
