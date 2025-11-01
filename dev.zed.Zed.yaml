@@ -1,10 +1,18 @@
 # dev.zed.Zed.yaml
 app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
-runtime-version: '25.08'
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 command: zed-wrapper
 separate-locales: false
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/info
+  - /share/man
+  - /man
+  - "/lib/*.a"
+  - "/lib/*.la"
 finish-args:
   - --device=dri
   - --filesystem=home
@@ -28,19 +36,12 @@ modules:
   - name: gcr
     buildsystem: meson
     cleanup:
-      - /include
       - /lib/debug
       - /lib/girepository-1.0
-      - /lib/pkgconfig
-      - /man
       - /share/gir-1.0
       - /share/doc
       - /share/gtk-doc
-      - /share/info
-      - /share/man
       - /share/pkgconfig
-      - '*.a'
-      - '*.la'
     config-opts:
       - -Dgtk_doc=false
       - -Dintrospection=false
@@ -48,36 +49,6 @@ modules:
       - type: archive
         sha256: bad10f3c553a0e1854649ab59c5b2434da22ca1a54ae6138f1f53961567e1ab7
         url: https://download.gnome.org/sources/gcr/3.41/gcr-3.41.2.tar.xz
-
-  - name: libmd
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://libbsd.freedesktop.org/releases/libmd-1.1.0.tar.xz
-        sha256: 1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332
-        x-checker-data:
-          type: anitya
-          project-id: 15525
-          stable-only: true
-          url-template: https://libbsd.freedesktop.org/releases/libmd-$version.tar.xz
-    cleanup:
-      - /lib/pkgconfig
-      - /share/man
-
-  - name: libbsd
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://libbsd.freedesktop.org/releases/libbsd-0.12.2.tar.xz
-        sha256: b88cc9163d0c652aaf39a99991d974ddba1c3a9711db8f1b5838af2a14731014
-        x-checker-data:
-          type: anitya
-          project-id: 1567
-          stable-only: true
-          url-template: https://libbsd.freedesktop.org/releases/libbsd-$version.tar.xz
-    cleanup:
-      - /lib/pkgconfig
-      - /share/man
 
   - name: netcat
     buildsystem: simple
@@ -87,7 +58,9 @@ modules:
           echo "Applying $patch..."
           patch -Np1 -i "debian/patches/$patch"
         done < debian/patches/series
-      - make CFLAGS="$CFLAGS -I/usr/include/libbsd" LDFLAGS="$LDFLAGS -lbsd"
+      # Allow building with static libbsd and libmd
+      - sed -i 's/LIBS=/LIBS ?=/' Makefile
+      - make CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" LIBS="-Wl,-Bstatic -lbsd -lmd -Wl,-Bdynamic -lresolv"
       - install -Dm0755 nc /app/bin/nc
     sources:
       - type: archive
@@ -95,9 +68,39 @@ modules:
         sha256: 4984c52882affcc638678a887964f7ab1d21901a2c5c37a38363138370d4dbda
         x-checker-data:
           type: anitya
-          project-id: 21535
+          project-id: 21534
           stable-only: true
           url-template: https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/$version-1/netcat-openbsd-debian-$version-1.tar.gz
+    modules:
+      - name: libbsd
+        buildsystem: autotools
+        config-opts:
+          - --enable-static
+          - --disable-shared
+        sources:
+          - type: archive
+            url: https://libbsd.freedesktop.org/releases/libbsd-0.12.2.tar.xz
+            sha256: b88cc9163d0c652aaf39a99991d974ddba1c3a9711db8f1b5838af2a14731014
+            x-checker-data:
+              type: anitya
+              project-id: 1567
+              stable-only: true
+              url-template: https://libbsd.freedesktop.org/releases/libbsd-$version.tar.xz
+        modules:
+          - name: libmd
+            buildsystem: autotools
+            config-opts:
+              - --enable-static
+              - --disable-shared
+            sources:
+              - type: archive
+                url: https://libbsd.freedesktop.org/releases/libmd-1.1.0.tar.xz
+                sha256: 1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332
+                x-checker-data:
+                  type: anitya
+                  project-id: 15525
+                  stable-only: true
+                  url-template: https://libbsd.freedesktop.org/releases/libmd-$version.tar.xz
 
   - name: zed
     buildsystem: simple
