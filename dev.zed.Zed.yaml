@@ -8,7 +8,9 @@ separate-locales: false
 cleanup:
   - /include
   - /lib/pkgconfig
+  - /share/info
   - /share/man
+  - /man
   - "/lib/*.a"
   - "/lib/*.la"
 finish-args:
@@ -36,11 +38,9 @@ modules:
     cleanup:
       - /lib/debug
       - /lib/girepository-1.0
-      - /man
       - /share/gir-1.0
       - /share/doc
       - /share/gtk-doc
-      - /share/info
       - /share/pkgconfig
     config-opts:
       - -Dgtk_doc=false
