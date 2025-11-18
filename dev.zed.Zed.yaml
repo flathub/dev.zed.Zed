@@ -53,7 +53,6 @@ modules:
   - name: gcr
     buildsystem: meson
     cleanup:
-      - /lib/debug
       - /lib/girepository-1.0
       - /share/gir-1.0
       - /share/doc
