@@ -31,6 +31,8 @@ finish-args:
   - --socket=gpg-agent
 
   - --env=SSH_ASKPASS=/app/libexec/openssh/gnome-ssh-askpass
+  # Prevent Zed from escaping the sandbox by default
+  - --env=ZED_FLATPAK_NO_ESCAPE=1
 
 modules:
   - shared-modules/libsecret/libsecret.json
