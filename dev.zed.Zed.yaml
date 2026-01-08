@@ -3,7 +3,7 @@ app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
-command: zed.sh
+command: zed-wrapper
 separate-locales: false
 cleanup:
   - /include
@@ -209,11 +209,3 @@ modules:
         path: README.md
       - type: file
         path: sdk_update.md
-
-  - name: zed.sh
-    buildsystem: simple
-    build-commands:
-      - install -Dm755 zed.sh ${FLATPAK_DEST}/bin/zed.sh
-    sources:
-      - type: file
-        path: zed.sh
