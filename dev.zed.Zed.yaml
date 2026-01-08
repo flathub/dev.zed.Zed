@@ -31,6 +31,7 @@ finish-args:
   - --socket=gpg-agent
 
   - --env=SSH_ASKPASS=/app/libexec/openssh/gnome-ssh-askpass
+  - --env=ZED_UPDATE_EXPLANATION="Please use flatpak to update zed"
 
 modules:
   - shared-modules/libsecret/libsecret.json
