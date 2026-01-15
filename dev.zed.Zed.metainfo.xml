@@ -8,7 +8,7 @@
   </developer>
   <description>
     <p>
-      *NOTE*: This is the official release of Zed, packaged into a Flatpak by the community. This repackaging is not yet supported by Zed Industries, Inc.
+      **NOTE: This wrapper is not verified by, affiliated with, or supported by Zed Industries, Inc.**
     </p>
     <p>
       Productive coding starts with a tool that stays out of your way. Zed blends the power of an IDE with the speed of a lightweight editor for productivity you can feel under your fingertips.
@@ -63,8 +63,17 @@
   <url type="contribute">https://github.com/zed-industries/zed/blob/main/CONTRIBUTING.md</url>
   <project_group>Zed</project_group>
   <releases>
-    <release version="v0.218.5" date="2026-01-07">
+    <release version="v0.219.4" date="2026-01-14">
       <description></description>
+    </release>
+    <release version="v0.218.7" date="2026-01-12">
+      <description/>
+    </release>
+    <release version="v0.218.6" date="2026-01-08">
+      <description/>
+    </release>
+    <release version="v0.218.5" date="2026-01-07">
+      <description/>
     </release>
     <release version="v0.217.4" date="2026-01-05">
       <description/>
