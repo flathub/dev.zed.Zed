@@ -34,7 +34,6 @@ finish-args:
   - --env=ZED_UPDATE_EXPLANATION="Please use flatpak to update zed"
 
 modules:
-  - shared-modules/libsecret/libsecret.json
 
   - name: ssh-askpass
     buildsystem: simple
