@@ -14,9 +14,9 @@ To cope with it, Zed's flatpak defaults can be changed to:
 
 ### Environment variables
 
-- `ZED_FLATPAK_NO_ESCAPE`: disable flatpak sandbox escape (default: not set)
+- `ZED_FLATPAK_NO_ESCAPE`: disable flatpak sandbox escape (default: set)
   ```shell
-    $ flatpak override --user dev.zed.Zed --env=ZED_FLATPAK_NO_ESCAPE=1
+    $ flatpak override --user --unset-env=ZED_FLATPAK_NO_ESCAPE dev.zed.Zed
   ```
 
 ### Execute commands on the host system

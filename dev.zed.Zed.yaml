@@ -1,7 +1,7 @@
 # dev.zed.Zed.yaml
 app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
-runtime-version: '25.08'
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 command: zed-wrapper
 separate-locales: false
@@ -32,6 +32,7 @@ finish-args:
 
   - --env=SSH_ASKPASS=/app/libexec/openssh/gnome-ssh-askpass
   - --env=ZED_UPDATE_EXPLANATION="Please use flatpak to update zed"
+  - --env=ZED_FLATPAK_NO_ESCAPE=1
 
 modules:
 
