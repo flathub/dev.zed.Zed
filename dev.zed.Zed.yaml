@@ -1,7 +1,7 @@
 # dev.zed.Zed.yaml
 app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
-runtime-version: '25.08'
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 command: zed-wrapper
 separate-locales: false
@@ -34,7 +34,6 @@ finish-args:
   - --env=ZED_UPDATE_EXPLANATION="Please use flatpak to update zed"
 
 modules:
-
   - name: ssh-askpass
     buildsystem: simple
     build-commands:
@@ -129,7 +128,7 @@ modules:
       - install -Dm 644 share/icons/hicolor/512x512/apps/zed.png --target-directory ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
 
       # Rename instances of `zed` to `${FLATPAK_ID}`
-      - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/{applications/*,icons/hicolor/*/apps/*}
+      - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/icons/hicolor/*/apps/*
 
       # Ensure zed-wrapper is used as the Exec command in the `.desktop` file
       - desktop-file-edit --set-key="Exec" --set-value="zed-wrapper %U" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
