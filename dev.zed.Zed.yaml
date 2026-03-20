@@ -35,7 +35,6 @@ finish-args:
   - --env=ZED_FLATPAK_NO_ESCAPE=1
 
 modules:
-
   - name: ssh-askpass
     buildsystem: simple
     build-commands:
@@ -130,7 +129,7 @@ modules:
       - install -Dm 644 share/icons/hicolor/512x512/apps/zed.png --target-directory ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
 
       # Rename instances of `zed` to `${FLATPAK_ID}`
-      - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/{applications/*,icons/hicolor/*/apps/*}
+      - rename zed ${FLATPAK_ID} ${FLATPAK_DEST}/share/icons/hicolor/*/apps/*
 
       # Ensure zed-wrapper is used as the Exec command in the `.desktop` file
       - desktop-file-edit --set-key="Exec" --set-value="zed-wrapper %U" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
@@ -138,8 +137,8 @@ modules:
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.224.5/zed-linux-x86_64.tar.gz
-        sha256: 01a1c0f68538e6eba67df8f8e07f60edf517204fc58eb100bfdd3e1800d27620
+        url: https://github.com/zed-industries/zed/releases/download/v0.228.0/zed-linux-x86_64.tar.gz
+        sha256: baecb8f3733df95346b83a1864d8de90e9b63285a9f6a67cbb4e8161ec33f8be
         only-arches:
           - x86_64
         x-checker-data:
@@ -149,8 +148,8 @@ modules:
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
           is-main-source: true
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.224.5/zed-linux-aarch64.tar.gz
-        sha256: c3d63ed1f3034d038407a1c8547c346ddea528b2b2967cbf5b23a02a37c562fa
+        url: https://github.com/zed-industries/zed/releases/download/v0.228.0/zed-linux-aarch64.tar.gz
+        sha256: c67507f3a7b68761cdde2948f59f1427cbcfadf5d35e23c97fa37e01e9c7b0b9
         only-arches:
           - aarch64
         x-checker-data:
