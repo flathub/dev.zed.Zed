@@ -43,8 +43,8 @@ modules:
       - install -Dm755 contrib/gnome-ssh-askpass3 ${FLATPAK_DEST}/libexec/openssh/gnome-ssh-askpass
     sources:
       - type: archive
-        sha256: ccc42c0419937959263fa1dbd16dafc18c56b984c03562d2937ce56a60f798b2
-        url: https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.2p1.tar.gz
+        sha256: 56682a36bb92dcf4b4f016fd8ec8e74059b79a8de25c15d670d731e7d18e45f4
+        url: https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.3p1.tar.gz
         x-checker-data:
           type: anitya
           project-id: 2565
@@ -138,8 +138,8 @@ modules:
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.229.0/zed-linux-x86_64.tar.gz
-        sha256: 180f4deaf7aa513a3f06648e3ecaad270bffcc64541e857f1e70381071a908cb
+        url: https://github.com/zed-industries/zed/releases/download/v0.230.0/zed-linux-x86_64.tar.gz
+        sha256: 6720ac73e2ba257a0b4460a676f27f317322a94f5f9ca9c98f246a328bc9ed0c
         only-arches:
           - x86_64
         x-checker-data:
@@ -149,8 +149,8 @@ modules:
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
           is-main-source: true
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v0.229.0/zed-linux-aarch64.tar.gz
-        sha256: 600e0eb299fe15e93d37b0b9152f29f6bb716e559cf993aa20285d315b880d10
+        url: https://github.com/zed-industries/zed/releases/download/v0.230.0/zed-linux-aarch64.tar.gz
+        sha256: 23777e72a327bbeb7688ff9151179a19b56a848055350856f052775221a0db1a
         only-arches:
           - aarch64
         x-checker-data:
