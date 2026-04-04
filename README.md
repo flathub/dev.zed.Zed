@@ -85,7 +85,7 @@ The following examples will figure out and launch the current user's preferred t
 }
 ```
 
-### SDK extensions
+### SDK extensions and dev containers
 
 This flatpak provides a standard development environment (gcc, python, etc).
 To see what's available:
@@ -95,7 +95,16 @@ To see what's available:
   $ ls /usr/bin (shared runtime)
   $ ls /app/bin (bundled with this flatpak)
 ```
-To get support for additional languages, you have to install SDK extensions, e.g.
+
+Should you require additional features you can either install SDK extensions (see below)
+or use dev containers, to allow dev containers to build successfuly (tested on ubuntu 24.04LTS with podman) add 
+`\tmp` to the filesystem permissions:
+
+```
+flatpak override --user --filesystem=/tmp dev.zed.Zed
+```
+
+To get support for additional languages via SDK extensions, install the relevant extension e.g.
 
 ```shell
   $ flatpak install flathub org.freedesktop.Sdk.Extension.dotnet
@@ -118,6 +127,7 @@ You can use:
   $ flatpak search <TEXT>
 ```
 to find others.
+
 
 ### Run flatpak Zed from host terminal
 
