@@ -21,19 +21,23 @@ finish-args:
   - --socket=fallback-x11
   - --socket=pulseaudio
   - --socket=wayland
-
   # Enable access to Flatpak host commands (Needs linter exception: https://docs.flathub.org/docs/for-app-authors/linter#exceptions)
   - --talk-name=org.freedesktop.Flatpak
-
   # Enable access to Freedesktop Secret Service & related auth services since Zed uses Git heavily
   - --talk-name=org.freedesktop.secrets
   - --socket=ssh-auth
   - --socket=gpg-agent
-
+  # Allow Zed to use SSH_ASKPASS for Git operations that require authentication
   - --env=SSH_ASKPASS=/app/libexec/openssh/gnome-ssh-askpass
+  # Set an environment variable to inform users about updating Zed via Flatpak
   - --env=ZED_UPDATE_EXPLANATION="Please use flatpak to update zed"
   # Prevent Zed from escaping the sandbox by default
   - --env=ZED_FLATPAK_NO_ESCAPE=1
+  # Enable access to Docker & Podman socket
+  - --filesystem=/run/docker.sock:rw
+  - --filesystem=xdg-run/docker.sock:rw
+  - --filesystem=/run/podman/podman.sock:rw
+  - --filesystem=xdg-run/podman/podman.sock:rw
 
 modules:
   - name: ssh-askpass
