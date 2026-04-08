@@ -32,8 +32,6 @@ finish-args:
 
   - --env=SSH_ASKPASS=/app/libexec/openssh/gnome-ssh-askpass
   - --env=ZED_UPDATE_EXPLANATION="Please use flatpak to update zed"
-  # Prevent Zed from escaping the sandbox by default
-  - --env=ZED_FLATPAK_NO_ESCAPE=1
 
 modules:
   - name: ssh-askpass
