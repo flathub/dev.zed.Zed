@@ -35,6 +35,8 @@ finish-args:
   - --env=ZED_UPDATE_EXPLANATION="Please use flatpak to update zed"
   # Prevent Zed from escaping the sandbox by default
   - --env=ZED_FLATPAK_NO_ESCAPE=1
+  # Ensure Zed uses Flatpak sandbox binaries first over user binaries
+  - --env=SHELL=/app/bin/app-sh
   # Enable access to Docker & Podman socket
   - --filesystem=/run/docker.sock:rw
   - --filesystem=xdg-run/docker.sock:rw
@@ -216,6 +218,17 @@ modules:
         path: README.md
       - type: file
         path: sdk_update.md
+
+  - name: app-sh
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 app-sh -t ${FLATPAK_DEST}/bin/
+      - install -Dm644 inject-app-bin.sh -t ${FLATPAK_DEST}/share/
+    sources:
+      - type: file
+        path: app-sh/app-sh
+      - type: file
+        path: app-sh/inject-app-bin.sh
 
   - name: docker
     buildsystem: simple
