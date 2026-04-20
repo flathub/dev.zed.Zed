@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# SPDX-License-Identifier: MIT
+
+# This is a small wrapper for /bin/sh that ensures the /app/bin is first in the PATH
+# no matter what happens in startup files like .profile. This is needed to ensure Zed
+# uses the Flatpak sandbox implementations of Flatpak-provided binaries, instead of
+# anything the user might have in .local/bin/ or similar.
+#
+# POSIX-compatible sh (e.g. Bash started as /bin/sh) sources $ENV after any /etc/profile
+# or ~/.profile sources. We use this to inject a small script that places /app/bin at
+# the beginning of the PATH before the shell script/commands/REPL begin.
+
+export ENV=/app/share/inject-app-bin.sh
+exec /bin/sh "$@"
