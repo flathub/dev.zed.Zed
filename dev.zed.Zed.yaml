@@ -1,8 +1,10 @@
 # dev.zed.Zed.yaml
 app-id: dev.zed.Zed
 runtime: org.freedesktop.Sdk
-runtime-version: '25.08'
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
 command: zed-wrapper
 separate-locales: false
 cleanup:
@@ -21,17 +23,21 @@ finish-args:
   - --socket=fallback-x11
   - --socket=pulseaudio
   - --socket=wayland
-
   # Enable access to Flatpak host commands (Needs linter exception: https://docs.flathub.org/docs/for-app-authors/linter#exceptions)
   - --talk-name=org.freedesktop.Flatpak
-
   # Enable access to Freedesktop Secret Service & related auth services since Zed uses Git heavily
   - --talk-name=org.freedesktop.secrets
   - --socket=ssh-auth
   - --socket=gpg-agent
-
+  # Allow Zed to use SSH_ASKPASS for Git operations that require authentication
   - --env=SSH_ASKPASS=/app/libexec/openssh/gnome-ssh-askpass
+  # Set an environment variable to inform users about updating Zed via Flatpak
   - --env=ZED_UPDATE_EXPLANATION="Please use flatpak to update zed"
+  # Ensure Zed uses Flatpak sandbox binaries first over user binaries
+  - --env=SHELL=/app/bin/app-sh
+  # Enable access to Docker & Podman socket
+  - --filesystem=/run/docker.sock:rw
+  - --filesystem=xdg-run/podman/podman.sock:rw
 
 modules:
   - name: ssh-askpass
@@ -116,6 +122,70 @@ modules:
                   project-id: 15525
                   stable-only: true
                   url-template: https://libbsd.freedesktop.org/releases/libmd-$version.tar.xz
+
+  - name: docker
+    buildsystem: simple
+    build-options:
+      append-path: /usr/lib/sdk/golang/bin
+    build-commands:
+      - |-
+        export GOPATH="$PWD"/go TARGET="$PWD"/out
+        cd go/src/github.com/docker/cli && ./scripts/build/binary
+      - install -Dm755 out/docker -T ${FLATPAK_DEST}/bin/docker.real
+      # Remap Docker arguments to respect the document portal sandbox
+      - install -Dm755 docker-map-doc-paths.py ${FLATPAK_DEST}/bin/docker
+      # Include host-spawn shims for known credential helpers
+      - ln -s /app/bin/host-spawn ${FLATPAK_DEST}/bin/docker-credential-secretservice
+      - ln -s /app/bin/host-spawn ${FLATPAK_DEST}/bin/docker-credential-pass
+      - ln -s /app/bin/host-spawn ${FLATPAK_DEST}/bin/docker-credential-gcr
+      - ln -s /app/bin/host-spawn ${FLATPAK_DEST}/bin/docker-credential-acr-env
+      - ln -s /app/bin/host-spawn ${FLATPAK_DEST}/bin/docker-credential-ecr-login
+    sources:
+      - type: git
+        url: https://github.com/docker/cli.git
+        tag: v29.4.0
+        commit: 9d7ad9ff180b43ae5577d048a7bac1159ce7bacf
+        dest: go/src/github.com/docker/cli
+        x-checker-data:
+          type: git
+          url: https://github.com/docker/cli.git
+          tag-pattern: "^(v\\d+\\.\\d+\\.\\d+)$"
+      - type: file
+        path: docker-map-doc-paths.py
+
+  - name: podman
+    buildsystem: simple
+    build-options:
+      append-path: /usr/lib/sdk/golang/bin
+    build-commands:
+      - make PREFIX=${FLATPAK_DEST} podman-remote
+      - install -Dm755 bin/podman-remote -T ${FLATPAK_DEST}/bin/podman.real
+      # Remap Podman arguments to respect the document portal sandbox
+      - install -Dm755 docker-map-doc-paths.py ${FLATPAK_DEST}/bin/podman
+    sources:
+      - type: git
+        url: https://github.com/containers/podman.git
+        tag: v5.8.1
+        commit: c6077f645788743258a1a749f8005b4fb3cbe533
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/containers/podman/releases/latest
+          tag-query: .tag_name
+          timestamp-query: .published_at
+          version-query: $tag | sub("^v"; "")
+      - type: file
+        path: docker-map-doc-paths.py
+
+  - name: app-sh
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 app-sh -t ${FLATPAK_DEST}/bin/
+      - install -Dm644 inject-app-bin.sh -t ${FLATPAK_DEST}/share/
+    sources:
+      - type: file
+        path: app-sh/app-sh
+      - type: file
+        path: app-sh/inject-app-bin.sh
 
   - name: zed
     buildsystem: simple
