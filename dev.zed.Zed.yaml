@@ -46,8 +46,8 @@ modules:
       - install -Dm755 contrib/gnome-ssh-askpass3 ${FLATPAK_DEST}/libexec/openssh/gnome-ssh-askpass
     sources:
       - type: archive
-        sha256: d44d28a839ea9daf969cc69150fde59910b2b39361dad81a3bd6cbd19218db11
-        url: https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.5p1.tar.gz
+        sha256: a9dc9565dffe8640f64d863cd29a32bc4a3dbdec0566a7fc44c5d6ee767d5f39
+        url: https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.6p1.tar.gz
         x-checker-data:
           type: anitya
           project-id: 2565
@@ -143,8 +143,8 @@ modules:
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v1.22.0/zed-linux-x86_64.tar.gz
-        sha256: 5ce3991b34a8fad0a23625f5821cda601c7150a6cc69683c097b8d1b083abc50
+        url: https://github.com/zed-industries/zed/releases/download/v1.23.2/zed-linux-x86_64.tar.gz
+        sha256: cabddd5af2b26a19633ea39f5dde070e2aad204bb815bfa74cb65073ffd5ff39
         only-arches:
           - x86_64
         x-checker-data:
@@ -154,8 +154,8 @@ modules:
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
           is-main-source: true
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v1.22.0/zed-linux-aarch64.tar.gz
-        sha256: 8b3c5d6e506056a9456ed33072081fd64db84ce47cdf34d4936442cc4f08394a
+        url: https://github.com/zed-industries/zed/releases/download/v1.23.2/zed-linux-aarch64.tar.gz
+        sha256: 882dc2dc0ba316cd5efbdf566eb91a473bd462da3a8c284f3a5bcc96b1e9a7cc
         only-arches:
           - aarch64
         x-checker-data:
