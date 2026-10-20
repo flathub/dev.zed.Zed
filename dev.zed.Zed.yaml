@@ -84,8 +84,8 @@ modules:
       - install -Dm0755 nc /app/bin/nc
     sources:
       - type: archive
-        url: https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/1.238-1/netcat-openbsd-debian-1.238-1.tar.gz
-        sha256: ca2fed5e3e0e9841af812bd7ad2ed9e094f5c4cb72817e91323c75e14858af4a
+        url: https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/1.239-1/netcat-openbsd-debian-1.239-1.tar.gz
+        sha256: 2a5c1304047a69a680a45834756136bde6fb1f73f9e8610b18e9c1dbff09259f
         x-checker-data:
           type: anitya
           project-id: 21534
@@ -143,8 +143,8 @@ modules:
       - desktop-file-edit --set-icon="${FLATPAK_ID}" ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v1.24.2/zed-linux-x86_64.tar.gz
-        sha256: 020a3b02a9f4bb5e0015bad7cc644262bf4ea32cd7ef6f7f4691946d43af0f89
+        url: https://github.com/zed-industries/zed/releases/download/v1.24.4/zed-linux-x86_64.tar.gz
+        sha256: ecf2a7969fc71f74a7392b5022c3037c526108f9fe4b6da60355e259cd0dd4d2
         only-arches:
           - x86_64
         x-checker-data:
@@ -154,8 +154,8 @@ modules:
           url-query: .assets[] | select(.name=="zed-linux-x86_64.tar.gz") | .browser_download_url
           is-main-source: true
       - type: archive
-        url: https://github.com/zed-industries/zed/releases/download/v1.24.2/zed-linux-aarch64.tar.gz
-        sha256: 96a54806a7e286452078bdfc94b63c7bf6b8324ffcb16c5c60ff1fd96743ea45
+        url: https://github.com/zed-industries/zed/releases/download/v1.24.4/zed-linux-aarch64.tar.gz
+        sha256: 2b2c436f197a2c1197f2f7fd73220ef6f5af89462d95de970ff043d49e8a4700
         only-arches:
           - aarch64
         x-checker-data:
